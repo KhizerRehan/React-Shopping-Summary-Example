@@ -18,3 +18,8 @@
 .purchase-card > div {
     padding: 0.5em;
 }
+
+/* Comp:ItemDetail */
+.item-details-button:focus {
+  outline: none;
+}
