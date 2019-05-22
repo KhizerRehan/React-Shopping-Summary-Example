@@ -1,10 +1,12 @@
 import React from 'react';
-import './App.css';
+import { Grid } from 'react-bootstrap';
+import './App.scss';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="container">
+      <header className="purchase-card">
        <h1>Hello World</h1>
       </header>
     </div>
