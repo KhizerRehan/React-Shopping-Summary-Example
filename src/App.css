@@ -15,6 +15,6 @@
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-.purchase-card > .show-grid {
-  padding-bottom: 1.5em;
+.purchase-card > div {
+    padding: 0.5em;
 }
