@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Subtotal from './components/Subtotal/Subtotal';
 import './App.css';
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
     return (
       <div className="container">
         <header className="purchase-card">
-         <h1>Hello World</h1>
+         <Subtotal price={this.state.total.toFixed(2)} />
         </header>
       </div>
     );
