@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
-import { Row, Col, Tooltip, OverlayTrigger } from 'react-bootstrap';
+
+import React, {Component} from 'react';
+import {Row, Col, Tooltip, OverlayTrigger} from 'react-bootstrap';
 
 const styles = {
-    pickupSavings:{
-        color:'red'
+    pickupSavings: {
+        color: 'red'
     },
-    totalSavings:{
-        color:'grey'
+    totalSavings: {
+        color: 'grey'
     },
-    tooltip:{
-        color:'yellow'
+    tooltip: {
+        color: 'yellow'
     }
-}
+};
 export default class PickupSavings extends Component {
     render() {
         const tooltip = (
@@ -20,16 +21,17 @@ export default class PickupSavings extends Component {
             </Tooltip>
         );
         return (
-                <Row>
-                    <Col md={6}>
+            <Row>
+                <Col md={6}>
                     <OverlayTrigger placement="top" overlay={tooltip}>
-                    <div style={styles.pickupSavings}> Pickup Savings</div>
+                        <div style={styles.pickupSavings}> Pickup Savings</div>
                     </OverlayTrigger>
-                    </Col>
-                    <Col md={6} style={styles.totalSavings}>
-                        {`$${this.props.price}`}
-                    </Col>
-                </Row>
+                </Col>
+                <Col md={6} style={styles.totalSavings}>
+                    {`$${this.props.price}`}
+                </Col>
+            </Row>
         );
     }
 }
+
