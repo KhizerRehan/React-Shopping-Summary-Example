@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid } from 'react-bootstrap';
-import './App.scss';
+import './App.css';
 
 
 function App() {
