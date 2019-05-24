@@ -6,6 +6,7 @@ import TaxesFees from './components/TaxesFees/TaxesFees';
 import {Container, Row, Col} from 'react-bootstrap';
 import EstimatedTotal from './components/EstimatedTotal/EstimatedTotal';
 import ItemDetail from './components/ItemDetail/ItemDetail.jsx';
+import PromoCodeDiscount from './components/PromoCodeDiscount/PromoCodeDiscount';
 
 import './App.css';
 
@@ -21,6 +22,20 @@ class App extends Component {
         }
     }
 
+    componentDidMount() {
+        this.setState({
+            taxes:(this.state.total+this.state.pickupSavings)*0.0875
+        },
+        () => {
+           this.setState({
+            price:this.state.total+this.state.pickupSavings+this.state.taxes
+           },()=>{
+           console.log(this.state);
+           })
+        }
+        );
+    }
+
     render() {
         return (
             <Container className="container">
@@ -31,6 +46,7 @@ class App extends Component {
                         <TaxesFees taxes={this.state.taxes.toFixed(2)}/>
                         <EstimatedTotal price={this.state.price.toFixed(2)}/>
                         <ItemDetail {...this.state}/>
+                        <PromoCodeDiscount />
                     </Col>
                 </Row>
             </Container>
