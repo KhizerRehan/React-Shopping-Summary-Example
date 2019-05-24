@@ -1,0 +1,6 @@
+export const PROMO_CODES = {
+    RAMAZAN_VOUCHER: 'RAMAZAN',
+    RAMAZAN_VOUCHER_DISCOUNT:50
+};
+
+export default PROMO_CODES;

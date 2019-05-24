@@ -10,6 +10,7 @@ import PromoCodeDiscount from './components/PromoCodeDiscount/PromoCodeDiscount'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from './redux/actions';
+import PROMO_CODES from './shared/APP_CONSTANTS';
 import './App.css';
 
 class App extends Component {
@@ -35,12 +36,18 @@ class App extends Component {
            },()=>{
            console.log(this.state);
            })
-        }
-        );
+        });
     }
 
     giveDiscountUsingPromoCode = () =>{
-        console.log('Event Fired');
+        console.log('Event Fired',this.props.promoCode);
+        if(this.props.promoCode && this.props.promoCode === PROMO_CODES.RAMAZAN_VOUCHER){
+            alert(`${PROMO_CODES.RAMAZAN_VOUCHER} coupen redeemed successfully`);
+            this.setState({
+                price:(this.state.total+this.state.pickupSavings+this.state.taxes)-PROMO_CODES.RAMAZAN_VOUCHER_DISCOUNT,
+                disablePromoButton:true
+            });
+        }
     }
     
     render() {
