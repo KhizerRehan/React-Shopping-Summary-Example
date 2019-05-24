@@ -18,7 +18,9 @@ class App extends Component {
             pickupSavings: -3.85,
             taxes: 0,
             price: 10,
-            qty:1
+            qty:1,
+            disablePromoButton:false
+
         }
     }
 
@@ -36,6 +38,10 @@ class App extends Component {
         );
     }
 
+    giveDiscountHandler = () =>{
+        console.log('Event Fired');
+    }
+    
     render() {
         return (
             <Container className="container">
@@ -46,7 +52,7 @@ class App extends Component {
                         <TaxesFees taxes={this.state.taxes.toFixed(2)}/>
                         <EstimatedTotal price={this.state.price.toFixed(2)}/>
                         <ItemDetail {...this.state}/>
-                        <PromoCodeDiscount />
+                        <PromoCodeDiscount isDisabled={this.state.disablePromoButton} giveDiscount={()=> this.giveDiscountHandler()}/>
                     </Col>
                 </Row>
             </Container>
