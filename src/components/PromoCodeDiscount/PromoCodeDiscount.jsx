@@ -10,7 +10,11 @@ import {
     FormControl
 } from 'react-bootstrap';
 
-export default class PromoCodeDiscount extends Component {
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import * as actions from '../../redux/actions';
+
+class PromoCodeDiscount extends Component {
 
     constructor(props) {
         super(props);
@@ -25,6 +29,12 @@ export default class PromoCodeDiscount extends Component {
             open:!this.state.open
         });
     }
+
+    handleChange = (evt)=>{
+        // FIRING EVENT OF REDUX ACTION CREEATOR: mapDispatchToProps 
+        this.props.handleChange(evt);
+    }
+    
     render() {
         return (
            <React.Fragment>
@@ -52,7 +62,7 @@ export default class PromoCodeDiscount extends Component {
                         bsstyle="success"
                         className="btn btn-success btn-round"
                         disabled={this.props.isDisabled}
-                        onClick={this.props.giveDiscount}
+                        onClick={this.props.giveDiscountUsingPromoCode}
                         >Apply Promo Code</Button>
                     </Form>
                     </Col>
@@ -62,3 +72,15 @@ export default class PromoCodeDiscount extends Component {
         )
     }
 }
+
+const mapStateToProps =  state =>({
+    promoCode: state.promoCode.value
+})
+
+// Make sure the actions are available as props
+// so you don't have to do store.dispatch
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(actions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PromoCodeDiscount)

@@ -7,7 +7,9 @@ import {Container, Row, Col} from 'react-bootstrap';
 import EstimatedTotal from './components/EstimatedTotal/EstimatedTotal';
 import ItemDetail from './components/ItemDetail/ItemDetail.jsx';
 import PromoCodeDiscount from './components/PromoCodeDiscount/PromoCodeDiscount';
-
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as actions from './redux/actions';
 import './App.css';
 
 class App extends Component {
@@ -20,7 +22,6 @@ class App extends Component {
             price: 10,
             qty:1,
             disablePromoButton:false
-
         }
     }
 
@@ -38,7 +39,7 @@ class App extends Component {
         );
     }
 
-    giveDiscountHandler = () =>{
+    giveDiscountUsingPromoCode = () =>{
         console.log('Event Fired');
     }
     
@@ -52,7 +53,7 @@ class App extends Component {
                         <TaxesFees taxes={this.state.taxes.toFixed(2)}/>
                         <EstimatedTotal price={this.state.price.toFixed(2)}/>
                         <ItemDetail {...this.state}/>
-                        <PromoCodeDiscount isDisabled={this.state.disablePromoButton} giveDiscount={()=> this.giveDiscountHandler()}/>
+                        <PromoCodeDiscount isDisabled={this.state.disablePromoButton} giveDiscountUsingPromoCode={this.giveDiscountUsingPromoCode}/>
                     </Col>
                 </Row>
             </Container>
@@ -60,4 +61,15 @@ class App extends Component {
     }
 }
 
-export default App;
+
+const mapStateToProps =  state =>({
+    promoCode: state.promoCode.value
+})
+
+// Make sure the actions are available as props
+// so you don't have to do store.dispatch
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(actions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
