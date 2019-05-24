@@ -33,6 +33,7 @@ export default class ItemDetail extends Component {
                         onClick={this.toggleCollapse}>
                     {this.state.open ? `- Hide` : `+ Show`} Details
                 </Button>
+                <br /><br />
                 <Collapse in={this.state.open}>
                     <div>
                             <Media>
