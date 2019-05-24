@@ -46,7 +46,7 @@ export default class ItemDetail extends Component {
                                 />
                                 <Media.Body>
                                     <h5>Media Heading</h5>
-                                    <p>
+                                    <div>
                                         Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
                                         ante sollicitudin commodo.
 
@@ -61,7 +61,7 @@ export default class ItemDetail extends Component {
                                             <strong>Qty</strong>: {this.props.qty ? `${this.props.qty}` : `0`}
                                             </Col>
                                         </Row>
-                                    </p>
+                                    </div>
                                 </Media.Body>
                             </Media>
                     </div>
